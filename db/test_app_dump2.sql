@@ -49,42 +49,6 @@ CREATE TABLE ar_internal_metadata (
 ALTER TABLE ar_internal_metadata OWNER TO postgres;
 
 --
--- Name: articles; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE articles (
-    id bigint NOT NULL,
-    title character varying,
-    body text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
-ALTER TABLE articles OWNER TO postgres;
-
---
--- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE articles_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE articles_id_seq OWNER TO postgres;
-
---
--- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE articles_id_seq OWNED BY articles.id;
-
-
---
 -- Name: product_categories; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -202,13 +166,6 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
--- Name: articles id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY articles ALTER COLUMN id SET DEFAULT nextval('articles_id_seq'::regclass);
-
-
---
 -- Name: product_categories id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -234,21 +191,6 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 --
 
 INSERT INTO ar_internal_metadata VALUES ('environment', 'development', '2018-01-26 07:05:28.69673', '2018-01-26 07:05:28.69673');
-
-
---
--- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO articles VALUES (1, 'first article', 'first article body', '2018-01-26 07:08:21.87995', '2018-01-26 07:08:21.87995');
-INSERT INTO articles VALUES (2, 'second article', 'second article body', '2018-01-26 07:08:29.825459', '2018-01-26 07:08:29.825459');
-
-
---
--- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('articles_id_seq', 2, true);
 
 
 --
@@ -438,14 +380,6 @@ ALTER TABLE ONLY ar_internal_metadata
 
 
 --
--- Name: articles articles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY articles
-    ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
-
-
---
 -- Name: product_categories product_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -475,20 +409,6 @@ ALTER TABLE ONLY schema_migrations
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
-
-
---
--- Name: index_articles_on_body; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX index_articles_on_body ON articles USING btree (body);
-
-
---
--- Name: index_articles_on_title; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX index_articles_on_title ON articles USING btree (title);
 
 
 --
