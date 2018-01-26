@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'pg', '~> 0.18.4'
-
+gem 'will_paginate', '~> 3.0.6'
 gem 'knock'
 gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'
 

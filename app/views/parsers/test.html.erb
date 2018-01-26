@@ -1,1 +1,7 @@
-<%= @max_page %>
+<% @products.each do |product_node| %>
+<p>
+  name: <%= product_node.css('.wrap-img a').attr('title').value %> |
+  price: <%=  product_node.css('.subcategory-product-item__price_standart .subcategory-product-item__price-num').text %>
+  <hr/>
+</p>
+<% end %>

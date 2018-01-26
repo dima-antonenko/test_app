@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>TestApp</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Shop Homepage - Start Bootstrap Template</title>
+		<!-- Bootstrap core CSS -->
+		<link href="/theme/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link href="/theme/css/shop-homepage.css" rel="stylesheet">
+		<%= stylesheet_link_tag    'application', media: 'all' %>
+	</head>
+	<body>
+		<!-- Navigation -->
+		<%= render '/layouts/parts/top_menu' %>
+		<!-- Page Content -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<%= render '/layouts/parts/categories_list' %>
+				</div>
+				<!-- /.col-lg-3 -->
+				<div class="col-lg-9">
+					<%= yield %>
+				</div>
+				<!-- /.col-lg-9 -->
+			</div>
+			<!-- /.row -->
+		</div>
+	
+		
+		<!-- Bootstrap core JavaScript -->
+		<script src="/theme/vendor/jquery/jquery.min.js"></script>
+		<script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<%= javascript_include_tag 'application' %>
+	</body>
 </html>

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :articles
-  post 'user_token' => 'user_token#create'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get '/test', action: 'test', controller: 'parsers'
+  post 'user_token' => 'user_token#create'
+
+  root 'product_categories#index'
+
+  get '/api_request', action: 'api_request', controller: 'product_categories'
+
+  resources :product_categories, only: [:show]
 end
