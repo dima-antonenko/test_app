@@ -5,7 +5,9 @@ class ParsersController < ApplicationController
 
 
   def test
-    @doc = Nokogiri::HTML(open("https://www.citilink.ru/catalog/mobile/"))
-    @categories = @doc.css('#content h2 a')
+    product_category = ProductCategory.first
+    @doc = Nokogiri::HTML(open(product_category.source_url))
+    @products = @doc.css('#content .subcategory-product-item')
+    @max_page = @doc.css('.page_listing .last a')[0].text
   end
 end
